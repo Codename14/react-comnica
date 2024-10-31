@@ -23,10 +23,10 @@ export default function NavBar() {
     };
     return (
         <nav className='nav__container limit-width'>
-            <div className='company'>
+            <a href='/' className='company'>
                 <CompanyLogo />
                 <p className='nav__title'>Comnica</p>
-            </div>
+            </a>
             <button onClick={handleTheme} className={`theme-toggle ${theme} `}>
                 <input type='checkbox' />
             </button>

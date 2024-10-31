@@ -50,3 +50,8 @@ span {
 .text-bold {
     font-weight: 600;
 }
+
+.skeli {
+    height: 26.78px;
+    @include skeleton(var(--primary));
+}
