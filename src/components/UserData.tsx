@@ -13,6 +13,7 @@ export default function UserData() {
     useEffect(() => {
         const fetchUsersAndColors = async () => {
             try {
+                /*Egy kis idő, hogy a loading state látható legyen */
                 await new Promise((resolve) => setTimeout(resolve, 2000));
 
                 // Felhasználók lekérése - példaként hogy működjön pokemonokat kérek le
@@ -47,32 +48,20 @@ export default function UserData() {
         fetchUsersAndColors();
     }, []);
 
-    if (loading)
-        return (
-            <div className='top-container'>
-                <div className='limit-width'>
-                    <h1 className='hero-title '>Felhasználók listája</h1>
-                    <ul className='user-list'>
-                        {Array.from({ length: 100 }, (_, index) => (
-                            /*************  ✨ Codeium Command 🌟  *************/
-                            <li key={index} className='skeli' style={{ width: `${Math.floor(Math.random() * (120 - 60 + 1)) + 40}px` }}></li>
-                            // /******  76b70bea-d217-4004-8881-b3d23b949a4a  *******/
-                        ))}
-                    </ul>
-                </div>
-            </div>
-        );
-
     return (
         <div className='top-container'>
             <div className='limit-width'>
                 <h1 className='hero-title '>Felhasználók listája</h1>
                 <ul className='user-list'>
-                    {users.map((user: User, index: number) => (
-                        <li key={index} style={{ background: user.color }}>
-                            {user.name}
-                        </li>
-                    ))}
+                    {loading
+                        ? Array.from({ length: 100 }, (_, index) => (
+                              <li key={index} className='skeli' style={{ width: `${Math.floor(Math.random() * (120 - 60 + 1)) + 40}px` }}></li>
+                          ))
+                        : users.map((user: User, index: number) => (
+                              <li key={index} style={{ background: user.color }}>
+                                  {user.name}
+                              </li>
+                          ))}
                 </ul>
             </div>
         </div>
