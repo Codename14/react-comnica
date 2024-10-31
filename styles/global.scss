@@ -47,13 +47,14 @@ body {
 }
 
 .hero {
+    position: relative;
     width: 100%;
     // background: var(--background);
     // background: linear-gradient(to right, #e0f7ef 60%, #f1fbf8 40%);
 }
 .hero__container {
-    height: 100vh;
-    height: 100svh;
+    min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,12 +62,24 @@ body {
     .hero__img {
         object-fit: contain;
         width: 100%;
+        max-width: 300px;
         // width: min(200px, 100%);
     }
     .hero__left,
     .hero__right {
         height: 100%;
         isolation: isolate;
+        padding: 1em;
+        div {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    .hero__left {
+        position: relative;
     }
     .hero__left {
         padding-top: var(--nav_size);
@@ -78,6 +91,10 @@ body {
     @media (min-width: 768px) {
         > .hero__left,
         > .hero__right {
+            div {
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
             padding: 3em;
             padding-top: calc(var(--nav_size) * 2.5);
             height: 100%;

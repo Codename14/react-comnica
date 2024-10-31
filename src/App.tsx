@@ -21,9 +21,7 @@ function App() {
                     <div className='hero__right'>
                         <img className='bg__image right' src={BackgroungIMG} alt='abstract lines' />
                         <div>
-                            <h2 className='hero-title color-secondary '>
-                                Üdvözlöm <br />a Comnica Signature-ben!
-                            </h2>
+                            <h2 className='hero-title color-secondary '>Üdvözlöm a Comnica Signature-ben!</h2>
                             <p className='right__text'>
                                 A következökben végigvezetjük dokumentumai elfogadásán és aláírásán. A folyamat több percet is igénybe vehet. ezért
                                 kérjük, csak akkor kezdje el. ha készen áll rá.

@@ -3,7 +3,7 @@
 //---------------------------------------------------------
 
 @mixin baseFontSize() {
-    font-size: clamp(0.9rem, 4vw + 0.1rem, 1rem);
+    font-size: clamp(0.8rem, 3vw + 0.1rem, 1rem);
 }
 @mixin titleFontSize() {
     font-size: clamp(1rem, 5vw + 0.1rem, 1.5rem);
