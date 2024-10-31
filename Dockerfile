@@ -9,7 +9,7 @@ COPY bun.lockb ./
 RUN bun install
 
 COPY . .
-ENV PORT=4173
+ENV PORT=5173
 
 # Next.js collects completely anonymous telemetry data about general usage. Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line to disable telemetry at run time
@@ -19,7 +19,7 @@ ENV PORT=4173
 
 RUN bun run build
 # and
-CMD bun run preview --port 4173
+CMD bun run preview --port 5173
 
 # OR for sart Next.js in development, comment above two lines and uncomment below line
 
