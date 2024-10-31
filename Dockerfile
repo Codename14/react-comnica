@@ -18,7 +18,7 @@ COPY . .
 
 RUN bun run build
 # and
-CMD bun run preview
+CMD bun run preview --port 4173
 
 # OR for sart Next.js in development, comment above two lines and uncomment below line
 
