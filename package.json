@@ -28,5 +28,8 @@
     "typescript-eslint": "^8.11.0",
     "vite": "^5.4.10",
     "zod": "^3.23.8"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.6.1"
   }
 }
