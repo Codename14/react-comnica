@@ -1,3 +1,4 @@
+@use './config/index.scss' as *;
 *,
 *::before,
 *::after {
@@ -15,44 +16,94 @@ html {
 
 body {
     font-family: 'Roboto', sans-serif;
-}
-
-:root {
-    --primary: #31363c;
-    --secondary: #29a98b;
-    --background: #20876f;
-    --text-accent: #186553;
-    --text-secondary: #682c5d;
-    --maxWidth: 1400px;
-}
-@mixin containerChild() {
-    width: min(var(--maxWidth), 100% - 1rem);
-    margin-inline: auto;
+    color: var(--text-color);
 }
 
 .limit-width {
     @include containerChild();
     margin: 0 auto;
-    border: 1px solid red;
+    // border: 3px solid green;
 }
 
 .hero {
-    background: var(--secondary);
+    width: 100%;
+    // background: var(--background);
+    // background: linear-gradient(to right, #e0f7ef 60%, #f1fbf8 40%);
 }
 .hero__container {
     height: 100vh;
     height: 100svh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    padding-top: clamp(2rem, 10vw, 10rem);
+    .hero__img {
+        object-fit: contain;
+        width: 100%;
+        // width: min(200px, 100%);
+    }
+    .hero__left,
+    .hero__right {
+        height: 100%;
+    }
+    .hero__left {
+        padding-top: var(--nav_size);
+        background: var(--background);
+    }
+    .hero__right {
+        background: var(--background_light);
+    }
+    @media (min-width: 768px) {
+        > .hero__left,
+        > .hero__right {
+            padding: 3em;
+            padding-top: calc(var(--nav_size) * 2.5);
+            height: 100%;
+        }
+        grid-template-columns: 6fr 4fr;
+        .hero__left {
+            background: var(--background);
+            > div {
+                margin-left: auto;
+                // border: 1px solid red;
+                display: grid;
+                grid-template-columns: 4fr 3fr;
+                width: min(100%, calc(var(--max_width) / 10 * 6));
+            }
+        }
+        .hero__right {
+            background: var(--background_light);
+            div {
+                margin-right: auto;
+                width: min(100%, calc(var(--max_width) / 10 * 4));
+                .right__text {
+                    max-width: 42ch;
+                }
+            }
+        }
+    }
 }
 nav {
     position: fixed;
-    top: 00%;
+    top: 0%;
     transform: translateX(-50%);
     width: 100%;
     left: 50%;
-    .nav__container {
-        padding: 1em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .company {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+    }
+    .nav__title {
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .logo {
+        height: calc(var(--nav_size) - 1.5rem);
     }
 }

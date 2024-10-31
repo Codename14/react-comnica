@@ -1,3 +1,11 @@
 export default function Button() {
-    return <div>Kezdhetjük</div>;
+    const handleClick = () => {
+        console.log('Welcome to our site!');
+    };
+
+    return (
+        <button onClick={handleClick} className='btn btn--primary'>
+            Kezdhetjük
+        </button>
+    );
 }

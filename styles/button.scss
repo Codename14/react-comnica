@@ -1,0 +1,139 @@
+@keyframes greentopBubbles {
+    0% {
+        background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+    }
+
+    50% {
+        background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
+    }
+
+    100% {
+        background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+}
+@keyframes greenbottomBubbles {
+    0% {
+        background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+    }
+
+    50% {
+        background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+    }
+
+    100% {
+        background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+}
+
+$particleColor: var(--secondary);
+@mixin Particles() {
+    &:before,
+    &:after {
+        position: absolute;
+        content: '';
+        width: 150%;
+        left: 50%;
+        height: 100%;
+        transform: translateX(-50%);
+        z-index: -1000;
+        background-repeat: no-repeat;
+    }
+    &:active:before {
+        top: -70%;
+        background-image: radial-gradient(circle, $particleColor 20%, transparent 20%),
+            radial-gradient(circle, transparent 20%, $particleColor 20%, transparent 30%),
+            radial-gradient(circle, $particleColor 20%, transparent 20%), radial-gradient(circle, $particleColor 20%, transparent 20%),
+            radial-gradient(circle, transparent 10%, $particleColor 15%, transparent 20%),
+            radial-gradient(circle, $particleColor 20%, transparent 20%), radial-gradient(circle, $particleColor 20%, transparent 20%),
+            radial-gradient(circle, $particleColor 20%, transparent 20%), radial-gradient(circle, $particleColor 20%, transparent 20%);
+        background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+        background-position: 50% 120%;
+        animation: greentopBubbles 0.6s ease;
+    }
+    &:active::after {
+        bottom: -70%;
+        background-image: radial-gradient(circle, $particleColor 20%, transparent 20%), radial-gradient(circle, $particleColor 20%, transparent 20%),
+            radial-gradient(circle, transparent 10%, $particleColor 15%, transparent 20%),
+            radial-gradient(circle, $particleColor 20%, transparent 20%), radial-gradient(circle, $particleColor 20%, transparent 20%),
+            radial-gradient(circle, $particleColor 20%, transparent 20%), radial-gradient(circle, $particleColor 20%, transparent 20%);
+        background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+        background-position: 50% 0%;
+        animation: greenbottomBubbles 0.6s ease;
+    }
+}
+
+.btn {
+    cursor: pointer;
+    padding: 0.9em 1em;
+    border-radius: var(--border_radius);
+    border: none;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 500;
+    margin-top: 2em;
+    @include transButton();
+}
+
+.btn--primary {
+    position: relative;
+    background: var(--primary);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    &:hover {
+        background: var(--secondary);
+    }
+    &:active {
+        transform: scale(0.96);
+    }
+    @include Particles();
+}
+
+/* From Uiverse.io by Shoh2008 */
+.theme-toggle {
+    --size: 30px;
+    border: none;
+    background: transparent;
+}
+
+.theme-toggle input[type='checkbox'] {
+    -webkit-appearance: none;
+    width: var(--size);
+    height: calc(var(--size) / 2);
+    background-color: #fff;
+    border: 1px solid #222;
+    border-radius: 30px 100px 100px 100px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s;
+}
+
+.theme-toggle input[type='checkbox']::before {
+    content: '';
+    position: absolute;
+    width: calc(var(--size) / 2);
+    height: calc(var(--size) / 2);
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) scale(0.7);
+    border: 1px solid #222;
+    border-radius: 30px 100px 100px 100px;
+    background-color: var(--primary);
+    box-sizing: border-box;
+    transition: all 0.5s;
+}
+
+.theme-toggle input[type='checkbox']:checked {
+    background-color: var(--secondary);
+    border-radius: 100px 100px 30px 100px;
+}
+
+.theme-toggle input[type='checkbox']:checked::before {
+    left: 50%;
+    background-color: #fff;
+    border-radius: 100px 100px 30px 100px;
+}

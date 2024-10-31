@@ -1,0 +1,41 @@
+/* :root {
+    --primary: #31363c;
+    --secondary: #29a98b;
+    --background: #20876f;
+    --text-accent: #186553;
+    --text-secondary: #682c5d;
+    --max_width: 1200px;
+} */
+
+:root:has(.saturated),
+.saturated {
+    --background_light: #29a98b;
+    --background: #20876f;
+    --secondary: #31363c;
+    --primary: #186553;
+    --text_accent: #682c5d;
+    --max_width: 1200px;
+    --nav_size: 60px;
+    --border_radius: 20px;
+    --text-color: white;
+}
+:root:has(.light),
+.light {
+    --background: #bfe5dd;
+    --background_light: #e1f3ef;
+    --primary: #2ca78a;
+    --secondary: #1c6451;
+    --text_accent: #7a506f;
+    --max_width: 1200px;
+    --nav_size: 60px;
+    --border_radius: 20px;
+    --text-color: black;
+}
+
+@mixin containerChild() {
+    width: min(var(--max_width), 100% - 1rem);
+    margin-inline: auto;
+}
+@mixin transButton() {
+    transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
